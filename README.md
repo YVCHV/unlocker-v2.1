@@ -1,4 +1,4 @@
-# unlockergram v2.2 [PUBLIC VERSION]
+# unlockergram v2.1 [PUBLIC VERSION]
 A telegram bot which unlocks doorlock 
 and making more things in FULL VERSION which is named teleflatgram and only costs 99 dollars
 
@@ -24,7 +24,7 @@ CSI    - camera I, II, III (which will divide
 by rooms in your SMART flat/house)
 
 Instructions to get the full script:
-1. DONATE ME 25 dollars or more via visa or mastercard
+1. DONATE ME 99 dollars or more via visa or mastercard
 IBAN: UA693220010000026007330081270
 2. Send me a message with a photo of receipt 
 with a comment "unlockergram" in telegram: 
