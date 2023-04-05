@@ -1,18 +1,23 @@
-# unlocker v2.1 PUBLIC VERSION 
+# unlocker (PUBLIC VERSION)
 Coded by DMYTRO YEVCHEV
 
 Telegram bot which will not only unlock your
-door! IN PRIVATE VERSION. You'll be able to 
+door! 
+
+IN PRIVATE VERSION. You'll be able to 
 give a food portion for yours pet, get 
-the actually photos from camera, take the 
+the actual photo from your camera, take the 
 water off in the flat, get the information 
-from 
+from different sensors directly to TELEGRAM 
+messanger. IMAGINE: you can't only controll 
+yours house, you can do the magic! 
 
 
 Connection:
-
 GPIO26 - unlocking
 GPIO19 - locking 
-GPIO6 - water OFF
+GPIO6  - water OFF
 GPIO25 - water ON
+GPIO17 - SmartFooder initial 
+
 
