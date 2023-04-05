@@ -4,8 +4,14 @@ and making more things in FULL VERSION which is PRIVATE and only costs 25 dollar
 
 FULLY CODED by DMYTRO YEVCHEV
 
-DONATE ME: 
+instructions to get full script
+1. DONATE ME 25 dollars or more via visa or mastercard
 IBAN: UA693220010000026007330081270
+2. Send me a message with a photo of receipt 
+with a comment "unlockergram" in telegram: 
+@realyvchv or email donate@yvchv.ua
+3. Wait for reply
+ 
 
 
 
