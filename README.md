@@ -1,5 +1,7 @@
-# unlockergram (PUBLIC VERSION)
-Coded by DMYTRO YEVCHEV
+# unlockergram v2.2 [PUBLIC VERSION]
+A telegram bot which unlocks doorlock 
+and making more things in [PRIVATE VERSION]
+FULLY CODED by DMYTRO YEVCHEV
 
 Telegram bot which will not only unlock your
 door! 
