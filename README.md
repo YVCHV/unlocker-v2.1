@@ -1,7 +1,15 @@
 # unlockergram v2.2 [PUBLIC VERSION]
 A telegram bot which unlocks doorlock 
-and making more things in [PRIVATE VERSION]
+and making more things in 
+FULL VERSION which is PRIVATE and only costs 
+25 dollars
+
 FULLY CODED by DMYTRO YEVCHEV
+
+DONATE ME: 
+IBAN: UA693220010000026007330081270
+
+
 
 Telegram bot which will not only unlock your
 door! 
