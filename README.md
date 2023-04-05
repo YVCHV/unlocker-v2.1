@@ -25,11 +25,9 @@ GPIO5  - sensor of water KITCHEN
 GPIO7  - sensor of water BATHROOM
 GPIO12 - sensor of movement 
 CSI    - camera I, II, III (which will divide
-by rooms in your SMART flat/house
+by rooms in your SMART flat/house)
 
-
-
-Instructions to get the full script
+Instructions to get the full script:
 1. DONATE ME 25 dollars or more via visa or mastercard
 IBAN: UA693220010000026007330081270
 2. Send me a message with a photo of receipt 
