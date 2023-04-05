@@ -1,8 +1,8 @@
-# unlockergram v2.2 [PUBLIC VERSION]
+# housegram v2.2 [PUBLIC VERSION]
 A telegram bot which unlocks doorlock 
-and making more things in FULL VERSION which is PRIVATE and only costs 25 dollars
-
-FULLY CODED by DMYTRO YEVCHEV
+and making more things in FULL VERSION which 
+is PRIVATE and only costs 25 dollars
+[FULLY CODED by DMYTRO YEVCHEV]
 
 Telegram bot which will not only unlock your
 door! 
@@ -23,7 +23,10 @@ GPIO25 - water ON wire
 GPIO17 - smartfooder initial wire
 GPIO5  - sensor of water KITCHEN
 GPIO7  - sensor of water BATHROOM
-GPIO12 - sensor of 
+GPIO12 - sensor of movement 
+CSI    - camera I, II, III (which will divide
+by rooms in your SMART flat/house
+
 
 
 Instructions to get the full script
