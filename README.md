@@ -1,4 +1,4 @@
-# unlocker (PUBLIC VERSION)
+# unlockergram (PUBLIC VERSION)
 Coded by DMYTRO YEVCHEV
 
 Telegram bot which will not only unlock your
