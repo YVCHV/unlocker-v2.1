@@ -1,7 +1,6 @@
 # unlockergram v2.2 [PUBLIC VERSION]
 A telegram bot which unlocks doorlock 
-and making more things in FULL VERSION which 
-is named teleflatgram and only costs 99 dollars
+and making more things in FULL VERSION which is named teleflatgram and only costs 99 dollars
 [FULLY CODED by DMYTRO YEVCHEV]
 
 Telegram bot which will not only unlock your
