@@ -4,10 +4,8 @@ and making more things in FULL VERSION which is named teleflatgram and only cost
 [FULLY CODED by DMYTRO YEVCHEV]
 
 Telegram bot which will not only unlock your door! 
-IN PRIVATE VERSION: You'll be able to give 
-a food portion for yours pet, get the actual 
-photo from your camera, take the water off 
-in your flat, get the information from different 
+IN PRIVATE VERSION: You'll be able to give a food portion for yours pet, get the actual 
+photo from your camera, take the water off in your flat, get the information from different 
 sensors directly to TELEGRAM messanger. 
 IMAGINE: you can't only controll yours house, 
 you can do the magic! 
