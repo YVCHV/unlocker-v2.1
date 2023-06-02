@@ -2,7 +2,7 @@
 
 #########LIBS##########################
 import re, json
-import sqlite3, random, os, datetime, time
+import sqlite3, random, os, datetime, time, subprocess
 import uuid
 import telebot
 import config, menu, func, db, os
@@ -10,26 +10,26 @@ from config import BOT_TOKEN
 from telebot import types
 import RPi.GPIO as GPIO
 #######################################
-white = 26
-yellow = 19
-red = 13
-green = 6
+white = 20
+yellow = 26
+red = 19
+green = 16
 #######################################
 now = datetime.datetime.now()
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 #LED White
 GPIO.setup(white, GPIO.OUT)
-GPIO.output(white, 0) #Off initially
+GPIO.output(white, 1) #Off initially
 #LED Yellow
 GPIO.setup(yellow, GPIO.OUT)
-GPIO.output(yellow, 0) #Off initially
+GPIO.output(yellow, 1) #Off initially
 #LED Red
 GPIO.setup(red, GPIO.OUT)
-GPIO.output(red, 0) #Off initially
+GPIO.output(red, 1) #Off initially
 #LED green
 GPIO.setup(green, GPIO.OUT)
-GPIO.output(green, 0) #Off initially
+GPIO.output(green, 1) #Off initially
 
 ###############START-FUNCTION###########
 def start_bot():
@@ -44,12 +44,12 @@ def start_bot():
         name = message.from_user.username
         func.first_start(chat_id,name)
         user = func.get_user(chat_id)
-        
+
         if func.is_adm(chat_id):
-            bot.send_message(chat_id=message.chat.id,text=f'Привет {name}. Я к твоим услугам',reply_markup=menu.adm_menu)
+            bot.send_photo(chat_id=message.chat.id,caption=f'Привет {name}. Я к твоим услугам',reply_markup=menu.adm_menu,photo=open('welcome.jpeg','rb'))
             bot.delete_message(chat_id=chat_id, message_id=message.message_id)
         elif func.is_ohr(chat_id):
-            bot.send_message(chat_id=message.chat.id,text=f'Привет охрана. Что произошло ?',reply_markup=menu.ohr_main_menu)
+            bot.send_photo(chat_id=message.chat.id,caption=f'Привет {name}. Я к твоим услугам',reply_markup=menu.adm_menu,photo=open('welcome.jpeg','rb'))
             bot.delete_message(chat_id=chat_id, message_id=message.message_id)
         else:
             bot.send_message(chat_id=message.chat.id,text=f'Проваливай, или я щас охрану вызову!',reply_markup=menu.main_menu)
@@ -64,9 +64,9 @@ def start_bot():
             user = func.get_user(chat_id)
             try:
                 if func.is_adm(chat_id):
-                    bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=f'Меню управления замками',reply_markup=menu.adm_zamok1)
+                    bot.edit_message_caption(chat_id=chat_id, message_id=message_id, caption=f'Меню управления замками',reply_markup=menu.adm_zamok1)
                 elif func.is_ohr(chat_id):
-                    bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=f'Меню управления замками',reply_markup=menu.ohr_zamok1)
+                    bot.edit_message_caption(chat_id=chat_id, message_id=message_id, caption=f'Меню управления замками',reply_markup=menu.ohr_zamok1)
                 else:
                     bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=f'Вы не имеете права управлять замками',reply_markup=menu.main_zamok1)
             except Exception as e:
@@ -79,8 +79,8 @@ def start_bot():
         if call.data == 'exit_to_adm_menu':
             if func.is_adm(call.message.chat.id):
                 try:
-                    bot.edit_message_text(chat_id=chat_id, message_id=message_id,
-                                          text='Ты вернулся в главное меню. Я к твоим услугам', reply_markup=menu.adm_menu)
+                    bot.edit_message_caption(chat_id=chat_id, message_id=message_id,
+                                          caption='Ты вернулся в главное меню. Я к твоим услугам', reply_markup=menu.adm_menu)
                 except Exception as e:
                     print(e)
 ########################################
@@ -88,7 +88,7 @@ def start_bot():
             if func.is_adm(call.message.chat.id):
 
                 try:
-                    bot.edit_message_text(chat_id=chat_id, message_id=message_id,text='OPEN/CLOSE',reply_markup=menu.on_off_lock())
+                    bot.edit_message_caption(chat_id=chat_id, message_id=message_id,caption='OPEN/CLOSE',reply_markup=menu.on_off_lock())
                 except Exception as e:
                     print(e)
 ########################################
@@ -150,8 +150,8 @@ def start_bot():
         if call.data == 'users_config':
             if func.is_adm(call.message.chat.id):
                 try:
-                    bot.edit_message_text(chat_id=chat_id, message_id=message_id,
-                                          text='Вы перешли к настройке пользователей!',reply_markup=menu.users_config)
+                    bot.edit_message_caption(chat_id=chat_id, message_id=message_id,
+                                          caption='Вы перешли к настройке пользователей!',reply_markup=menu.users_config)
                 except:
                     pass
 
@@ -159,7 +159,7 @@ def start_bot():
 ###############################
         if call.data == 'exit_to_menu':
                 bot.clear_step_handler(call.message)
-                    
+
                 if func.is_adm(chat_id):
                     bot.send_message(chat_id=chat_id, text='ADMINTEXT',reply_markup=menu.adm_main_menu)
                     bot.delete_message(chat_id=chat_id,message_id=message_id)
@@ -175,10 +175,10 @@ def start_bot():
         if call.data == 'info':
             try:
                 if func.is_adm(chat_id):
-                    bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=db.get_value('info_message'),
+                    bot.edit_message_caption(chat_id=chat_id, message_id=message_id, caption=db.get_value('info_message'),
                                           reply_markup=menu.adm_menu)
                 elif func.is_kur(chat_id):
-                    bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=db.get_value('info_message'),
+                    bot.edit_message_caption(chat_id=chat_id, message_id=message_id, caption=db.get_value('info_message'),
                                           reply_markup=menu.ohr_menu)
                 else:
                     bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=db.get_value('info_message'),
@@ -192,33 +192,35 @@ def start_bot():
             print(f'Фото с глазка! : {datetime.datetime.now()}')
             try:
                 if func.is_adm(chat_id):
-                        bot.edit_message_text(chat_id=chat_id,message_id=message_id, text='Фото с глазка <string>',reply_markup=menu.adm_menu)
-                        GPIO.output(red, 1)
+                        
+                        cmd = 'raspistill -o /home/main/unlocker/photo.jpg'
+                        
+                        bot.send_photo(chat_id=chat_id, reply_markup=menu.adm_menu, photo=open('photo.jpg','rb'),caption='Фото с глазка')
+                        bot.delete_message(chat_id=chat_id,message_id=message_id)
+                        #bot.delete_message(chat_id=chat_id,message_id=message_id -1)
+                        #bot.delete_message(chat_id=chat_id,message_id=message_id)
                 elif func.is_ohr(chat_id):
                         bot.edit_message_text(chat_id=chat_id,message_id=message_id, text='Фото с глазка <string>',reply_markup=menu.ohr_main_menu)
-                        GPIO.output(red, 1)
+
                 else:
                         bot.edit_message_text(chat_id=chat_id,message_id=message_id,text='У вас нет необходимых полномочий!',reply_markup=menu.main_menu)
-                        GPIO.output(red, 0)
+
             except Exception as e:
                 raise e
             finally:
                 GPIO.output(red, 0) #Эмуляция концевика
-                pass # 
+                pass #
 ###############################
         if call.data == 'cran_off':
             print(f'Водопровод закрытый! : {datetime.datetime.now()}')
             try:
                 if func.is_adm(chat_id):
-                        bot.edit_message_text(chat_id=chat_id,message_id=message_id, text='Вода перекрыта',reply_markup=menu.adm_menu)
-                        GPIO.output(green, 1)
+                        bot.edit_message_caption(chat_id=chat_id,message_id=message_id, caption='Вода перекрыта',reply_markup=menu.adm_menu)
                 elif func.is_ohr(chat_id):
-                        bot.send_message(chat_id=chat_id, text='Вода перекрыта',reply_markup=menu.ohr_main_menu)
-                        GPIO.output(green, 1)
+                        bot.edit_message_caption(chat_id=chat_id,message_id=message_id, caption='Вода перекрыта',reply_markup=menu.ohr_main_menu)
                         bot.delete_message(chat_id=chat_id,message_id=message_id)
                 else:
                         bot.edit_message_text(chat_id=chat_id,message_id=message_id,text='У вас нет необходимых полномочий!',reply_markup=menu.main_menu)
-                        GPIO.output(green, 0)
             except Exception as e:
                 raise e
             finally:
@@ -228,35 +230,45 @@ def start_bot():
             print(f'Дверь открыта! : {datetime.datetime.now()}')
             try:
                 if func.is_adm(chat_id):
-                        bot.edit_message_text(chat_id=chat_id,message_id=message_id, text='Дверь открыта',reply_markup=menu.adm_menu)
+                        bot.edit_message_caption(chat_id=chat_id,message_id=message_id, caption='Дверь открыта',reply_markup=menu.adm_menu)
+                        GPIO.output(white, 0)
+                        GPIO.output(yellow, 0)
+                        time.sleep(0.25)
                         GPIO.output(white, 1)
+                        GPIO.output(yellow, 1)
                 elif func.is_ohr(chat_id):
-                        bot.edit_message_text(chat_id=chat_id,message_id=message_id, text='Дверь открыта',reply_markup=menu.ohr_main_menu)
+                        bot.edit_message_caption(chat_id=chat_id,message_id=message_id, caption='Дверь открыта',reply_markup=menu.ohr_main_menu)
+                        GPIO.output(white, 0)
+                        GPIO.output(yellow, 0)
+                        time.sleep(0.25)
                         GPIO.output(white, 1)
+                        GPIO.output(yellow, 1)
                 else:
                         bot.edit_message_text(chat_id=chat_id,message_id=message_id,text='У вас нет необходимых полномочий!',reply_markup=menu.main_menu)
-                        GPIO.output(white, 0)
             except Exception as e:
                 raise e
-            finally:
-                GPIO.output(white, 0) #Эмуляция концевика          
 ################################
         if call.data == 'zamokclose':
-            print(f'Дверь закрыта! : {datetime.datetime.now()}')           
+            print(f'Дверь закрыта! : {datetime.datetime.now()}')
             try:
                 if func.is_adm(chat_id):
-                        bot.edit_message_text(chat_id=chat_id,message_id=message_id, text='Дверь закрыта',reply_markup=menu.adm_menu)
-                        GPIO.output(yellow, 1)
+                        bot.edit_message_caption(chat_id=chat_id,message_id=message_id, caption='Дверь закрыта',reply_markup=menu.adm_menu)
+                        GPIO.output(red, 0)
+                        GPIO.output(green, 0)
+                        time.sleep(0.2)
+                        GPIO.output(red, 1)
+                        GPIO.output(green, 1)
                 elif func.is_ohr(chat_id):
-                        bot.edit_message_text(chat_id=chat_id,message_id=message_id, text='Дверь закрыта',reply_markup=menu.ohr_main_menu)
-                        GPIO.output(yellow, 1)
+                        bot.edit_message_caption(chat_id=chat_id,message_id=message_id, caption='Дверь закрыта',reply_markup=menu.ohr_main_menu)
+                        GPIO.output(red, 0)
+                        GPIO.output(green, 0)
+                        time.sleep(0.2)
+                        GPIO.output(red, 1)
+                        GPIO.output(green, 1)
                 else:
                         bot.edit_message_text(chat_id=chat_id,message_id=message_id,text='У вас нет необходимых полномочий!',reply_markup=menu.main_menu)
-                        GPIO.output(yellow, 0)
             except Exception as e:
                 raise e
-            finally:
-                GPIO.output(yellow, 0)
 ##############################
     def telegram_polling():
         try:
