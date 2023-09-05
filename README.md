@@ -1,6 +1,7 @@
 # unlockergram v2.2 [PUBLIC VERSION]
 A telegram bot which unlocks doorlock 
-and making more things in FULL VERSION which is named teleflatgram and only costs 99 dollars
+and making more things in FULL VERSION
+which is named teleflatgram. 
 
 <b>[FULLY CODED by DMYTRO YEVCHEV]</b>
 
@@ -9,7 +10,6 @@ IN PRIVATE VERSION: You'll be able to give a food portion for yours pet, get the
 photo from your camera, take the water off in your flat, get the information from different 
 sensors directly to TELEGRAM messanger. 
 IMAGINE: you can't only controll yours house, you can do the magic! 
-
 
 Connection:
 GPIO26 - unlocking wire
@@ -23,14 +23,6 @@ GPIO12 - sensor of movement
 CSI    - camera I, II, III (which will divide
 by rooms in your SMART flat/house)
 
-Instructions to get the full script:
-1. DONATE ME 99 dollars or more via visa or mastercard
-IBAN: UA693220010000026007330081270
-2. Send me a message with a photo of receipt 
-with a comment "unlockergram" in telegram: 
-@realyvchv or email donate@yvchv.ua
-3. Wait for reply
- 
 
 
 
