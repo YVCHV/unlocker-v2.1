@@ -12,6 +12,7 @@ sensors directly to TELEGRAM messanger.
 IMAGINE: you can't only controll yours house, you can do the magic! 
 
 Connection:
+
 GPIO26 - unlocking wire
 GPIO19 - locking wire
 GPIO6  - water OFF wire
@@ -22,6 +23,7 @@ GPIO7  - sensor of water BATHROOM
 GPIO12 - sensor of movement 
 CSI    - camera I, II, III (which will divide
 by rooms in your SMART flat/house)
+
 
 
 
