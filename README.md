@@ -1,4 +1,4 @@
-# unlockergram v2.2 [PUBLIC VERSION]
+# unlocker v2.2 [PUBLIC VERSION]
 A telegram bot which unlocks doorlock 
 and making more things in FULL VERSION
 which is named teleflatgram. 
