@@ -9,7 +9,7 @@ import config, menu, func, db, os
 from config import BOT_TOKEN
 from telebot import types
 import RPi.GPIO as GPIO
-#######################################
+
 white = 20
 yellow = 26
 red = 19
